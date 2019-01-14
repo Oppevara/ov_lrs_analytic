@@ -1,0 +1,18 @@
+{
+  "name": "ov_lrs_analytics",
+  "version": "1.0.0",
+  "description": "Analytics scripts for Oppevara LRS",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "csv": "^5.1.0",
+    "mongodb": "^3.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pjotr Savitski <pjotr.savitski@tlu.ee>",
+  "license": "MIT"
+}
