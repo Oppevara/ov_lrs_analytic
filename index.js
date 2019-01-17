@@ -3,6 +3,7 @@ const clientDb = require('./lib/db').db;
 const materialInteractions = require('./lib/queries').materialInteractions;
 const materialInteractionsByVerb = require('./lib/queries').materialInteractionsByVerb;
 const materialScores = require('./lib/queries').materialScores;
+const contentTypeVerbs = require('./lib/queries').contentTypeVerbs;
 const writeDocumentsToCsv = require('./lib/csv').writeDocumentsToCsv;
 const chalk = require('chalk');
 const os = require('os');
@@ -44,6 +45,15 @@ cases.materialScores = {
     stringifier.write([document._id.url, document._id.verb, document.name, document.count, document.successCount, document.min, document.max, document.rawMin, document.rawMax, document.rawAvg]);
   },
   csvHeader: ['URL', 'verb', 'name', 'statement count', 'success count', 'minimum possible score', 'maximum possible score', 'student minimum score (raw)', 'student maximum score (raw)', 'student average score (raw)']
+};
+cases.contentTypeVerbs = {
+  title: 'Verbs by content type',
+  file: 'content-type-verbs.csv',
+  function: contentTypeVerbs,
+  csvCallback: (document, stringifier) => {
+    stringifier.write([document._id, document.verbs.join(',')]);
+  },
+  csvHeader: ['content type', 'verbs']
 };
 cases.all = {
   title: 'All',
